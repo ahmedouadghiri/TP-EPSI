@@ -1,0 +1,56 @@
+#version=RHEL8
+# Use graphical install
+# Défini l'affichage d'Anonconda
+graphical
+
+# Défini le dépôt utilisé par le gestionnaire de paquet pour installer le systéme.
+# Dans notre cas non allons utilisé le dépôt intégré à l'ISO
+repo --name="Minimal" --baseurl=file:///run/install/sources/mount-0000-cdrom/Minimal
+
+# Définir les paquets installés
+%packages
+@^minimal-environment
+kexec-tools
+
+%end
+
+# Keyboard layouts
+keyboard --xlayouts='fr (oss)'
+# System language
+lang fr_FR.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=enp1s0 --ipv6=auto --activate
+network  --hostname=template
+
+# Use CDROM installation media
+cdrom
+
+# Run the Setup Agent on first boot
+firstboot --enable
+reboot
+
+#Défini le disque utilisé pour l'instalation
+ignoredisk --only-use=vda
+autopart
+# Partition clearing information
+clearpart --none --initlabel
+
+# System timezone
+timezone Europe/Paris --isUtc
+
+# A compléter avec le mot de passe généré
+# Voir README.md
+rootpw --iscrypted $6$0Yv7SADZiFp3z3L9$l2/uWPrzwIVtm64j9uWs58DGTvYsZpqqxE/YgDghzDlKKUPgYEW0rEo7.i1LBpbwsg1Lf8XNFwJLJ/RFIY9Xs/
+
+sshkey --username=root "/root/.ssh/id_ed25519.pub"
+
+%addon com_redhat_kdump --enable --reserve-mb='auto'
+
+%end
+
+%anaconda
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+%end
