@@ -1,0 +1,9 @@
+---
+- name: execute our script
+  hosts: localhost
+  connection: local
+  become_user: root
+  become: yes
+  tasks: 
+     - name: Execute the script
+       command: sh /root/TP-EPSI/ansible/bin/terraform.sh 

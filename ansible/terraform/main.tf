@@ -1,5 +1,12 @@
+terraform {
+  required_providers {
+    scaleway = {
+      source = "scaleway/scaleway"
+     }
+   }
+  required_version = ">= 0.13"
+}
 provider "scaleway" {
-  organization = "${var.scaleway_organization}"
-  token = "${var.scaleway_token}"
-  region = "${var.scaleway_region}"
+  zone = "fr-par-1"
+  region = "fr-par"
 }
