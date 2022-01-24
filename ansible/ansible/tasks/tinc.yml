@@ -1,0 +1,33 @@
+---
+
+- hosts: router
+  roles:
+    - { role: tinc, tinc_setup: true, tinc_server: true }
+
+- hosts: node
+  roles:
+    - { role: tinc, tinc_setup: true, tinc_client: true, connect_to: router }
+
+- hosts: node,router
+  roles:
+    - { role: tinc, tinc_setup: true, tinc_keys: true,  connect_to: router }
+
+- hosts: node
+  tasks:
+    - name: Restart tincd@vpn.service on node
+      systemd:
+        name: tincd@vpn.service
+        enabled: true
+        state: restarted
+        no_block: true
+        daemon_reload: true
+
+- hosts: router
+  tasks:
+    - name: Restart tincd@vpn.service on router
+      systemd:
+        name: tincd@vpn.service
+        enabled: true
+        state: restarted
+        no_block: true
+        daemon_reload: true
