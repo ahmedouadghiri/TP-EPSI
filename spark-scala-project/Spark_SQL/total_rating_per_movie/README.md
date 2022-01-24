@@ -1,8 +1,6 @@
-# Analytical Query 
+# Analyse de requête
 
-**What is the total rating For each movie?**
-
-Run the following code to view output
+Exécutez le code suivant pour afficher sa catégorie
 
 ```
 sh execute.sh
