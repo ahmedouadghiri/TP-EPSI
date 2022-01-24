@@ -1,10 +1,8 @@
-# Analytical Query 
+# Analyse de requête
 
-**How many movies are starting with numbers or letters**
+**Trouver le nombre de films dans chaque genre**
 
-Example: Starting with 1/2/3.. and /A/B/C..Z
-
-Run the following code to view output
+Exécutez le code suivant pour afficher sa catégorie
 
 ```
 sh execute.sh
