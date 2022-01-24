@@ -1,8 +1,8 @@
-# Analytical Query
+# Analyse de requête
 
-**Find the distinct genres present in the dataset**
+**Trouver le nombre de films dans chaque genre**
 
-Run the following code to view output
+Exécutez le code suivant pour afficher la sortie
 
 ```
 sh execute.sh
