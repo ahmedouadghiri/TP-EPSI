@@ -2,7 +2,7 @@
 
 **Trouver le nombre de films dans chaque genre**
 
-Exécutez le code suivant pour afficher la sortie
+Exécutez le code suivant pour afficher sa catégorie
 
 ```
 sh execute.sh
