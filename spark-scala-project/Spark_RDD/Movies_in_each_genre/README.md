@@ -1,8 +1,8 @@
-# Analytical Query 
+# Analyse de requête
 
-**Find the number of movies in each genre**
+**Trouver le nombre de films dans chaque genre*
 
-Run the following code to view output
+Exécutez le code suivant pour afficher la sortiet
 
 ```
 sh execute.sh
